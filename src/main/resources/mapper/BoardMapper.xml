@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring_memberBoard.dao.BoardDao">
+  
+  	<update id="updateBstate">
+  		update boards set bstate = '0' where bno = #{bno}
+  	</update>
+  
+  	<select id="getBoard"
+  		resultType = "com.spring_memberBoard.dto.Board">
+		SELECT * FROM BOARDS WHERE BNO = #{bno}
+	</select>
+	
+	<select id="selectMaxBno" 
+		resultType="String">
+		SELECT MAX(BNO)+1 FROM BOARDS
+	</select>
+	
+	<insert id="insertBoard"
+		parameterType="com.spring_memberBoard.dto.Board">
+		INSERT INTO BOARDS VALUES( #{bno} ,#{bwriter}, #{btitle}, #{bcontents}, 0, SYSDATE, #{bfilename}, 1 )
+	</insert>
+  
+  	<select id = "selectBoards_map"	resultType="hashmap">
+  		select bo.*, nvl(re.recount,0) as recount from boards bo left outer join(select rebno, count(rebno) as recount from replys where restate = '1' group by rebno ) re on bo.bno = re.rebno where bo.bstate = '1' order by bo.bdate desc
+  	</select>
+</mapper>
