@@ -90,6 +90,7 @@
                 </c:forEach>
             </ul>
             <hr>
+            <%--
             <ul>
                     <li id="listHeader"> 
                         <div id="boardno">글번호</div> 
@@ -118,6 +119,7 @@
                     </li>                    
                 </c:forEach>
             </ul>
+             --%>
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/resources/js/main.js">        

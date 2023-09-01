@@ -4,9 +4,10 @@
 <div class="nav">
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/boardList">게시판</a></li>
-		<li><a href="${pageContext.request.contextPath}/memberChatPage">회원채팅</a>
 		<li><a href="${pageContext.request.contextPath}/tagoBus">타고버스</a></li>
+		<!-- 
 		<li><a href="${pageContext.request.contextPath}/busapi">버스노선</a></li>
+		 -->
 		<c:choose>
 			<c:when test="${sessionScope.loginMemberId == null}">
 				<li><a href="${pageContext.request.contextPath}/MemberJoinForm">회원가입</a></li>
